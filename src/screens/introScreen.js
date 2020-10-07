@@ -18,7 +18,7 @@ const slides = [
     backgroundColor: '#febe29',
   },
   {
-    key: 3,
+    key: 4,
     title: 'Rocket guy',
     text: 'I\'m already out of descriptions\n\nLorem ipsum bla bla bla',
     image: require('../../assets/favicon.png'),
