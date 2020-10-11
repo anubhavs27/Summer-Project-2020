@@ -6,9 +6,22 @@ import { Root } from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 
-export default class HomeScreen extends Component {
+export default class HomePage extends React.Component {
     constructor(props){
-        this.data = []
+        super(props);
+        testData = []
+        for (i = 0; i < 30; i ++){
+            testData.push(
+                {
+                "title": "food Option" + i,
+                "description": "description" + i
+                }
+            )
+        }  
+        this.state = {
+            data:testData,
+            loading: true
+        };
         /*for (i = 0; i < length(props.restaurants); i++){
             data.push(
                 {
@@ -17,47 +30,52 @@ export default class HomeScreen extends Component {
                 }
             )
         }*/
-        for (i = 0; i < 30; i ++){
-            this.data.push(
-                {
-                "title": "food Option" + i,
-                "description": "description" + i
-                }
+    }
+
+    async componentWillMount() {
+        await Font.loadAsync({
+          Roboto: require("native-base/Fonts/Roboto.ttf"),
+          Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+        });
+        this.setState({ loading: false });
+    }
+
+    render() {
+        if (!this.state.loading){
+            return (
+                <Container>
+                    <Content>
+                        <List  
+                        dataArray = {this.state.data}
+                        renderRow = {(listItem) => 
+                            <ListItem>
+                            <Text> {listItem.title} </Text>
+                            <Text> {listItem.description} </Text>
+                            </ListItem>
+                        }>
+                        </List> 
+                    </Content>
+                    <Footer>
+                        <FooterTab>
+                            <Button>
+                                <Text>Account</Text>
+                            </Button>
+                            <Button>
+                                <Text>Search</Text>
+                            </Button>
+                            <Button active>
+                                <Text>Help</Text>
+                            </Button>
+                        </FooterTab>
+                </Footer>
+            </Container>
+            );
+        }
+        else{
+            return (
+                <Container>
+                </Container>
             )
         }
-    }
-  
-    _renderItem = ({ item }) => {
-        return (
-            <Container>
-                <Content>
-                    <List  
-                    dataArray = {this.data}
-                    renderRow = {(listItem) => 
-                        <ListItem>
-                        <Text> {listItem.title} </Text>
-                        <Text> {listItem.description} </Text>
-                        </ListItem>
-                    }>
-                    </List> 
-                </Content>
-                <Footer>
-                    <FooterTab>
-                        <Button>
-                            <Text>Account</Text>
-                        </Button>
-                        <Button>
-                            <Text>Search</Text>
-                        </Button>
-                        <Button active>
-                            <Text>Help</Text>
-                        </Button>
-                    </FooterTab>
-            </Footer>
-        </Container>
-        );
-    }
-    render() {
-        return (this._renderItem)
     }
   }

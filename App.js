@@ -5,21 +5,13 @@ import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Root } from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-
+import HomePage from './src/screens/homePage'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <IntroScreen />
-      <StatusBar style="auto" />
-    </View>
+    <HomePage />
   );
 }
-
-/* favicon.png <-image
-return (
-   
-*/
 
 const styles = StyleSheet.create({
 
