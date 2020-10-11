@@ -1,14 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Placeholder from './src/screen/AccountRegistration';
+import IntroScreen from './src/screens/introScreen';
 
 export default function App() {
   return (
-    //<View style={styles.container}>
-      <Placeholder/>
-      //<StatusBar style="auto" />
-    //</View>
+    <View style={styles.container}>
+      <IntroScreen />
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
