@@ -6,10 +6,15 @@ import { Root } from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import HomePage from './src/screens/homePage'
+import { StyleSheet, Text, View } from 'react-native';
+import IntroScreen from './src/screens/introScreen';
 
 export default function App() {
   return (
-    <HomePage />
+    <View style={styles.container}>
+      <IntroScreen />
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
